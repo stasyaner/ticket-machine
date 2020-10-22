@@ -1,0 +1,96 @@
+{
+    "extends":
+    [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:react/recommended",
+        "plugin:jsdoc/recommended"
+    ],
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "jsdoc",
+        "react-hooks",
+        "import"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "project": "tsconfig.json",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "quotes": [2, "double"],
+        "indent": 0,
+        "no-trailing-spaces": 1,
+        "no-irregular-whitespace": 1,
+        "no-multiple-empty-lines": 1,
+        "max-len": [2, 120],
+        "object-curly-spacing": [1, "always"],
+        "comma-dangle": [1, "always-multiline"],
+        "radix": 2,
+        "object-shorthand": 2,
+        "semi": 0,
+        "eol-last": 2,
+        "no-shadow": 2,
+        "keyword-spacing": 2,
+        "padded-blocks": 0,
+        "no-unneeded-ternary": 2,
+        "no-console": 1,
+
+        "react/react-in-jsx-scope": 0,
+        "react/prop-types": 0,
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+        "react-hooks/rules-of-hooks": 2,
+        "react-hooks/exhaustive-deps": 1,
+        "react/jsx-indent-props": [2, 4],
+        "react/jsx-tag-spacing": 2,
+        "react/jsx-fragments": [2, "syntax"],
+        "react/no-array-index-key": 2,
+        "react/prefer-stateless-function": 2,
+        "react/self-closing-comp": 2,
+
+        "@typescript-eslint/quotes": [2, "double"],
+        "@typescript-eslint/indent": [
+            1, 4,
+            {
+                "FunctionExpression": { "parameters": "first" },
+                "FunctionDeclaration": { "parameters": "first" },
+                "SwitchCase": 1
+            }
+        ],
+        "@typescript-eslint/explicit-function-return-type": 2,
+        "@typescript-eslint/array-type": [2, { "default": "array-simple" }],
+        "@typescript-eslint/unbound-method": 0,
+        "@typescript-eslint/semi": 2,
+
+        "import/order": 0,
+        "import/extensions": 0,
+        "import/no-useless-path-segments": ["error", {
+            "noUselessIndex": true
+        }],
+
+        "jsdoc/require-jsdoc": 0
+    },
+    "settings": {
+        "react": {
+            "version": "detect",
+            "pragma": "react"
+        },
+        "import/resolver": {
+            "typescript": {},
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    }
+}
