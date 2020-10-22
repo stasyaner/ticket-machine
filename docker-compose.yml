@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  tt-machine:
+    container_name: tt-machine
+    image: tt-machine
+    networks:
+      - tt-machine
+    build: .
+networks:
+  tt-machine:
+    name: tt-machine
