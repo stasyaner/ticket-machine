@@ -23,8 +23,10 @@ const Home: React.FC<props> = ({ alphabet, strOfStations }) => {
         const newUserInput = letter === "del" ?
             userInput.substring(0, userInput.length - 1) :
             userInput + letter;
+        const matchedStationOpts = newUserInput.length > 0 ?
         // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
-        const matchedStationOpts = strOfStations.match(new RegExp(`^${newUserInput}.*`, "gim")) || [];
+            strOfStations.match(new RegExp(`^${newUserInput}.*`, "gim")) || []
+            : [];
         setStationOpts(matchedStationOpts);
         setUserInput(newUserInput);
     }, [userInput, strOfStations]);
