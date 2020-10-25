@@ -24,7 +24,7 @@ const Home: React.FC<props> = ({ alphabet, strOfStations }) => {
             userInput.substring(0, userInput.length - 1) :
             userInput + letter;
         const matchedStationOpts = newUserInput.length > 0 ?
-        // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
+            // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
             strOfStations.match(new RegExp(`^${newUserInput}.*`, "gim")) || []
             : [];
         setStationOpts(matchedStationOpts);
@@ -49,7 +49,7 @@ const Home: React.FC<props> = ({ alphabet, strOfStations }) => {
                         </td>
                     ))}
                     <td />
-                    <td>{stationOpts[i] || ""}</td>
+                    <td className="cell-st-opts">{stationOpts[i] || ""}</td>
                 </tr>
             ));
         }
@@ -64,43 +64,34 @@ const Home: React.FC<props> = ({ alphabet, strOfStations }) => {
                 <td colSpan={4}>
                     <button
                         onClick={appendInputHandler(" ")}
-                    >&nbsp;</button>
+                    >space</button>
                 </td>
                 <td>
                     <button
                         onClick={appendInputHandler("del")}
                     >del</button>
                 </td>
-                <td>{stationOpts[6] || ""}</td>
+                <td className="cell-st-opts">{stationOpts[6] || ""}</td>
             </tr>
         ));
         setLetpad(tbody);
     }, [appendInputHandler, alphabet, stationOpts, strOfStations]);
 
     return (
-        <div className="container">
+        <>
             <Head>
                 <title>Train Ticket Machine</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>
+            <main className="container">
                 <h1>Train Ticket Machine</h1>
                 {showTryAgainMessage ?
                     <h1>Service unavailable. Please try again in a minute or report to the staff.</h1>
                     :
                     <>
-                        <h1 id="user-input">{userInput}</h1>
-                        <table className="pad-container">
-                            <colgroup>
-                                <col className="col-letter" />
-                                <col className="col-letter" />
-                                <col className="col-letter" />
-                                <col className="col-letter" />
-                                <col className="col-letter" />
-                                <col id="col-spacer" />
-                                <col id="col-stations" />
-                            </colgroup>
+                        <h1 className="user-input">{userInput}</h1>
+                        <table className="letpad-table">
                             <tbody>
                                 {letpad}
                             </tbody>
@@ -108,7 +99,7 @@ const Home: React.FC<props> = ({ alphabet, strOfStations }) => {
                     </>
                 }
             </main>
-        </div>
+        </>
     );
 };
 
