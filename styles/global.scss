@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    width: 800px;
+    width: 750px;
     margin: 5% auto;
     text-align: center;
 }
@@ -32,6 +32,10 @@ body {
             margin: 0;
             outline-color: bisque;
             outline-offset: -2px;
+        }
+
+        &.not-available button {
+            color: #ccc;
         }
     }
 

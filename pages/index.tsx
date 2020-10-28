@@ -13,55 +13,90 @@ type props = {
 };
 
 const Home: React.FC<props> = ({ alphabet, strOfStations }) => {
+    const [availableLetters, setAvailableLetters] = useState<Map<string, boolean>>(new Map());
     const [letpad, setLetpad] = useState<JSX.Element[]>();
     const [userInput, setUserInput] = useState("");
     const [stationOpts, setStationOpts] = useState<string[]>([]);
     const [showTryAgainMessage, setShowTryAgainMessage] = useState(false);
 
-    const appendInputHandler = useCallback((letter: string) => (): void => {
-        if (letter === " " && !userInput) return;
-        const newUserInput = letter === "del" ?
+    const appendInputHandler = useCallback((char: string) => (): void => {
+        if (char === " " && !userInput) return;
+        const newUserInput = char === "del" ?
             userInput.substring(0, userInput.length - 1) :
-            userInput + letter;
-        const matchedStationOpts = newUserInput.length > 0 ?
+            userInput + char;
+        if (newUserInput.length > 0) {
             // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
-            strOfStations.match(new RegExp(`^${newUserInput}.*`, "gim")) || []
-            : [];
-        setStationOpts(matchedStationOpts);
+            const matchedStationOpts = strOfStations.match(new RegExp(`^${newUserInput}.*`, "gim")) || [];
+            const newAvailableLetters = new Map();
+            matchedStationOpts.forEach(m => {
+                const newLetter = m.charAt(newUserInput.length);
+                if (!newAvailableLetters.get(newLetter)) newAvailableLetters.set(newLetter, true);
+            });
+            setStationOpts(matchedStationOpts);
+            setAvailableLetters(newAvailableLetters);
+        } else {
+            setAvailableLetters(new Map(alphabet.map(a => ([a, true]))));
+            setStationOpts([]);
+        }
         setUserInput(newUserInput);
-    }, [userInput, strOfStations]);
+    }, [userInput, strOfStations, alphabet]);
 
+    // on prop change (=page load, see getStaticProps function)
     useEffect(() => {
+        // extend alphabet up to letters
+        const newLetters = new Map(alphabet.map(a => ([a, true])));
+        // "space" letter
+        newLetters.set(" ", false);
+        setAvailableLetters(newLetters);
+
         // show try again message
         setShowTryAgainMessage(strOfStations.length <= 0);
+    }, [alphabet, strOfStations]);
 
+    useEffect(() => {
         // load letterpad
         const tbody: JSX.Element[] = [];
         // a-x letters into rows by 5
         for (let i = 0; i < 25 / 5; i++) {
             tbody.push((
                 <tr key={`letpad-row-${i}`}>
-                    {alphabet.slice(i * 5, i * 5 + 5).map(l => (
-                        <td key={l}>
+                    {alphabet.slice(i * 5, i * 5 + 5).map(a => (
+                        <td
+                            key={a}
+                            className={availableLetters.get(a) ? "" : "not-available"}
+                        >
                             <button
-                                onClick={appendInputHandler(l)}
-                            >{l}</button>
+                                onClick={appendInputHandler(a)}
+                            >{a}</button>
                         </td>
                     ))}
                     <td />
-                    <td className="cell-st-opts">{stationOpts[i] || ""}</td>
+                    <td className="cell-st-opts">
+                        {stationOpts[i] ?
+                            <a href={`/link/to/buy/ticket/${stationOpts[i]}`}>{stationOpts[i]}</a>
+                            :
+                            ""
+                        }
+                    </td>
                 </tr>
             ));
         }
-        // letter z
+        // letter z, space and delete
         tbody.push((
-            <tr key="letpad-row-6">
-                <td>
+            <tr
+                key="letpad-row-6"
+            >
+                <td
+                    className={availableLetters.get(alphabet[25]) ? "" : "not-available"}
+                >
                     <button
                         onClick={appendInputHandler(alphabet[25])}
                     >{alphabet[25]}</button>
                 </td>
-                <td colSpan={4}>
+                <td
+                    colSpan={4}
+                    className={availableLetters.get(" ") ? "" : "not-available"}
+                >
                     <button
                         onClick={appendInputHandler(" ")}
                     >space</button>
@@ -71,11 +106,17 @@ const Home: React.FC<props> = ({ alphabet, strOfStations }) => {
                         onClick={appendInputHandler("del")}
                     >del</button>
                 </td>
-                <td className="cell-st-opts">{stationOpts[6] || ""}</td>
+                <td className="cell-st-opts">
+                    {stationOpts[6] ?
+                        <a href={`/link/to/buy/ticket/${stationOpts[6]}`}>{stationOpts[6]}</a>
+                        :
+                        ""
+                    }
+                </td>
             </tr>
         ));
         setLetpad(tbody);
-    }, [appendInputHandler, alphabet, stationOpts, strOfStations]);
+    }, [appendInputHandler, alphabet, stationOpts, availableLetters]);
 
     return (
         <>
