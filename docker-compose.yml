@@ -6,6 +6,8 @@ services:
     networks:
       - tt-machine
     build: .
+    ports:
+      - 3000:3000
 networks:
   tt-machine:
     name: tt-machine
