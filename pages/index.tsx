@@ -160,7 +160,8 @@ export const getStaticProps: GetStaticProps<props> = async () => {
         res = await fetch("https://raw.githubusercontent.com/abax-as" +
                           "/coding-challenge/master/station_codes.json");
     } catch (e) {
-        console.log(`An error occured when trying to send the request the server: ${(e as Error).message}`);
+        console.log("An error occured when trying to send the request " +
+                    `to the server: ${(e as Error).message}`);
     }
 
     let jsonRes: unknown | null = null;
@@ -195,7 +196,7 @@ export const getStaticProps: GetStaticProps<props> = async () => {
         }
     } else {
         console.log(`HTTP request has failed with ${res?.status || "unknown code"} error: ` +
-                    `${res?.statusText || "unknown HTTP status text"}`);
+                    `${(await res?.text()) || res?.statusText || "unknown error"}`);
     }
 
     // if any error occurs, the page will be up for the rebuild in a minute
