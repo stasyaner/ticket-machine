@@ -61,13 +61,14 @@ const Home: React.FC<props> = ({ alphabet, strOfStations }) => {
             tbody.push((
                 <tr key={`letpad-row-${i}`}>
                     {alphabet.slice(i * 5, i * 5 + 5).map(a => (
-                        <td
-                            key={a}
-                            className={availableLetters.get(a) ? "" : "not-available"}
-                        >
-                            <button
-                                onClick={appendInputHandler(a)}
-                            >{a}</button>
+                        <td key={a}>
+                            {availableLetters.get(a) ?
+                                <button
+                                    onClick={appendInputHandler(a)}
+                                >{a}</button>
+                                :
+                                <span className="not-available">{a}</span>
+                            }
                         </td>
                     ))}
                     <td />
@@ -86,20 +87,23 @@ const Home: React.FC<props> = ({ alphabet, strOfStations }) => {
             <tr
                 key="letpad-row-6"
             >
-                <td
-                    className={availableLetters.get(alphabet[25]) ? "" : "not-available"}
-                >
-                    <button
-                        onClick={appendInputHandler(alphabet[25])}
-                    >{alphabet[25]}</button>
+                <td>
+                    {availableLetters.get(alphabet[25]) ?
+                        <button
+                            onClick={appendInputHandler(alphabet[25])}
+                        >{alphabet[25]}</button>
+                        :
+                        <span className="not-available">{alphabet[25]}</span>
+                    }
                 </td>
-                <td
-                    colSpan={4}
-                    className={availableLetters.get(" ") ? "" : "not-available"}
-                >
-                    <button
-                        onClick={appendInputHandler(" ")}
-                    >space</button>
+                <td colSpan={4}>
+                    {availableLetters.get(" ") ?
+                        <button
+                            onClick={appendInputHandler(" ")}
+                        >space</button>
+                        :
+                        <span className="not-available">space</span>
+                    }
                 </td>
                 <td>
                     <button

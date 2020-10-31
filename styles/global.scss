@@ -1,4 +1,4 @@
-body {
+* {
     font-family: Arial;
 }
 
@@ -34,8 +34,9 @@ body {
             outline-offset: -2px;
         }
 
-        &.not-available button {
+        .not-available {
             color: #ccc;
+            cursor: no-drop;
         }
     }
 
