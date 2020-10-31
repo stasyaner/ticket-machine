@@ -179,7 +179,7 @@ export const getStaticProps: GetStaticProps<props> = async () => {
                 const itemAsStation = item;
                 const itemAsStationProps = Object.keys(itemAsStation);
 
-                return itemAsStationProps.indexOf("stationName") > 0 &&
+                return itemAsStationProps.indexOf("stationName") >= 0 &&
                         typeof itemAsStation.stationName === "string" &&
                         itemAsStation.stationName.replace(/\s/g, "").length > 0;
             });
