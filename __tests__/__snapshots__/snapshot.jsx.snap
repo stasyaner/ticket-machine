@@ -1,0 +1,293 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot testing renders letpad 1`] = `
+<main
+  className="container"
+>
+  <h1>
+    Train Ticket Machine
+  </h1>
+  <h1
+    className="user-input"
+  >
+    
+  </h1>
+  <table
+    className="letpad-table"
+  >
+    <tbody>
+      <tr>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            a
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            b
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            c
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            d
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            e
+          </button>
+        </td>
+        <td />
+        <td
+          className="cell-st-opts"
+        >
+          
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            f
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            g
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            h
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            i
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            j
+          </button>
+        </td>
+        <td />
+        <td
+          className="cell-st-opts"
+        >
+          
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            k
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            l
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            m
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            n
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            o
+          </button>
+        </td>
+        <td />
+        <td
+          className="cell-st-opts"
+        >
+          
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            p
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            q
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            r
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            s
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            t
+          </button>
+        </td>
+        <td />
+        <td
+          className="cell-st-opts"
+        >
+          
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            u
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            v
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            w
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            x
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            y
+          </button>
+        </td>
+        <td />
+        <td
+          className="cell-st-opts"
+        >
+          
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            z
+          </button>
+        </td>
+        <td
+          colSpan={4}
+        >
+          <span
+            className="not-available"
+          >
+            space
+          </span>
+        </td>
+        <td>
+          <button
+            onClick={[Function]}
+          >
+            del
+          </button>
+        </td>
+        <td
+          className="cell-st-opts"
+        >
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+`;
+
+exports[`snapshot testing renders service unavailable 1`] = `
+<main
+  className="container"
+>
+  <h1>
+    Train Ticket Machine
+  </h1>
+  <h1>
+    Service unavailable. Please try again in a minute or report to the staff.
+  </h1>
+</main>
+`;
+
+exports[`snapshot testing renders service unavailable w/ alphabet but w/o stations 1`] = `
+<main
+  className="container"
+>
+  <h1>
+    Train Ticket Machine
+  </h1>
+  <h1>
+    Service unavailable. Please try again in a minute or report to the staff.
+  </h1>
+</main>
+`;
